@@ -81,8 +81,8 @@ ensure_deps() {
   sudo apt-get --allow-releaseinfo-change -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false update
   sudo apt-get install --yes ${PKGLIST}
   ensure_venv
-  debug Running... "${OBICO_ENV}"/bin/pip3 install -q -r "${OBICO_DIR}"/requirements.txt
-  "${OBICO_ENV}"/bin/pip3 install -q -r "$F{OBICO_DIR}"/requirements.txt
+  debug Running... "${OBICO_ENV}"/bin/pip3 install -q -r /home/pi/moonraker-obico/requirements.txt
+  "${OBICO_ENV}"/bin/pip3 install -q -r /home/pi/moonraker-obico/requirements.txt
   echo ""
 }
 
