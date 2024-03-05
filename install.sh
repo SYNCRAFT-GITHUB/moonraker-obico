@@ -68,6 +68,12 @@ prompt_for_settings() {
 
 cat <<EOF
 
+We need info about your Moonraker. If you are not sure, just leave them as defaults.
+
+EOF
+
+}
+
 ensure_deps() {
   report_status "Installing required system packages... You may be prompted to enter password."
 
@@ -76,7 +82,7 @@ ensure_deps() {
   sudo apt-get install --yes ${PKGLIST}
   ensure_venv
   debug Running... "${OBICO_ENV}"/bin/pip3 install -q -r "${OBICO_DIR}"/requirements.txt
-  "${OBICO_ENV}"/bin/pip3 install -q -r "${OBICO_DIR}"/requirements.txt
+  "${OBICO_ENV}"/bin/pip3 install -q -r "$F{OBICO_DIR}"/requirements.txt
   echo ""
 }
 

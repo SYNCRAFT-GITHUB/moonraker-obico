@@ -101,6 +101,7 @@ want to link your printer using a 6-digit verification code instead.
 """)
         logging.getLogger('werkzeug').setLevel(logging.ERROR)
         discovery_thread = run_in_thread(run_discovery)
+        discoverable = False
         while discoverable:
             spin()
             if discoverable:
@@ -127,7 +128,21 @@ If you need help, head to https://obico.io/docs/user-guides/klipper-setup
 """)
 
     while True:
-        code = input('\nEnter verification code (or leave it empty to abort): ')
+
+        imported_code_path = os.path.join("/home", "pi", "moonraker-obico", "imported_code.txt")
+        imported_code = None
+
+        if not os.path.exists(imported_code_path):
+            print("error: no 6 digit code found")
+            exit()
+        else:
+            with open(imported_code_path, "r") as imported_code_file:
+                imported_code = imported_code_file.read()
+
+        code = imported_code
+
+        del imported_code_path, imported_code
+
         if not code.strip():
             sys.exit(255)
 

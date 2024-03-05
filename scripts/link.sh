@@ -97,7 +97,7 @@ prompt_for_sentry() {
   echo -e "\nOne last thing: Do you want to opt in bug reporting to help us make Obico better?"
   echo -e "The debugging info included in the report will be anonymized.\n"
   printf "Opt in bug reporting? [Y/n]:"
-  read opt_in
+  opt_in="n"
   # If user_input is empty, assign the default value
   : ${opt_in:="Y"}
   echo ""
